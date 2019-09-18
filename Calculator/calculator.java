@@ -1,3 +1,5 @@
+import java.lang.Math;
+
 public class arithCalc
 {
   private int x1, x2;
@@ -15,7 +17,7 @@ public class arithCalc
     System.out.println("Please enter first value");
     x1 = sc.nextInt();
     
-    System.out.println("Please enter second value");
+    System.out.println("Please enter second value (if factorial or sqrt then put any value)");
     x2 = sc.nextInt();
   }
   
@@ -23,16 +25,6 @@ public class arithCalc
   {
     op = (char)sc.nextline().charAt(0);
     return op;
-  }
-  
-  public int calcSum()
-  {
-    return this.x1 + this.x2;
-  }
-  
-  public int calcSub()
-  {
-    return this.x1 - this.x2;
   }
   
   public int getFirst()
@@ -45,21 +37,22 @@ public class arithCalc
     return this.x2;
   }
   
-}
-
-public class specCalc extends arithCalc
-{
-  public specCalc()
+  
+  
+  public int calcSum()
   {
-    super();
+    return this.x1 + this.x2;
   }
   
+  public int calcSub()
+  {
+    return this.x1 - this.x2;
+  }
   
   public int calcMult()
   {
-    this.getFirst() * this.getSecond();
+    return this.getFirst() * this.getSecond();
   }
-  
   
   public int calcDiv()
   {
@@ -73,21 +66,28 @@ public class specCalc extends arithCalc
   
   public int calcSqroot()
   {
-    this.getFirst() 
+    return Math.sqrt(this.getFirst()); 
   }
   
   public int calcPower()
   {
-    this.getFirst() ^ this.getSecond();
+    return Math.pow(this.getFirst, this.getSecond);
   }
   
   public int calcFactorial()
   {
+    int fact=1;  
+  
+    for(i=1; i<=this.getFirst(); i++)
+    {    
+        fact=fact*i;  
+    }
     
+    return fact;
   }
-
+  
 }
-
+  
 
 
 public class Calculator 
@@ -99,10 +99,10 @@ public class Calculator
     
     do
     {
-      System.out.println("Please enter a valid operator: + - * / ^ f(factorial) r(root)");
+      System.out.println("Please enter a valid operator: + - * / ^ ! r(root)");
       c.opSet();
     } while(c.op != '+' && c.op != '-' && c.op != '*' && c.op != '/' && c.op != '^'
-      && c.op != 'f' && c.op!= 'r');
+      && c.op != '!' && c.op!= 'r');
     
     switch(c.op)
     {
@@ -121,7 +121,7 @@ public class Calculator
       case '^':
             c.result = c.calcPower();
             break;
-      case 'f':
+      case '!':
             c.result = c.calcFactorial();
             break;
       case 'r':
