@@ -62,6 +62,8 @@ public static void main(String[] args)
      }
       
     } while(op != 'q');
+  
+  sc.close();
     
   }
 }
