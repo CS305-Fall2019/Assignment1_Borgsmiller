@@ -1,92 +1,67 @@
-import java.lang.Math;
 import java.util.Scanner;
 
-public class arithCalc
+public class calculator 
 {
-  private double x1, x2;
-  private Scanner sc;
-  public char op;
-  public double result;
 
-  public arithCalc()
+public static void main(String[] args)
   {
-    sc = new Scanner(System.in);
+    arithCalc c = new arithCalc();
+     char op;
+
+    Scanner sc = new Scanner(System.in);
 
     do
     {
       System.out.println("Please enter a valid operator: + - * / ^ ! r(sqrt) \n Or Press q to quit Calculator");
-      opSet();
+      op = sc.next().charAt(0);
+      
+      if (op == 'q')
+      {
+    	  sc.close();
+      		return;
+      }
+
+      System.out.println("Please enter first value");
+      c.x1 = sc.nextDouble();
+      
+      System.out.println("Please enter second value (if factorial or sqrt then put any value)");
+      c.x2 = sc.nextDouble();
+      
+      switch(op)
+      {
+        case '+':
+              c.result = c.calcSum();
+              System.out.println(c.result);
+              break;
+        case '-':
+              c.result = c.calcSub();
+              System.out.println(c.result);
+              break;
+        case '*':
+              c.result = c.calcMult();
+              System.out.println(c.result);
+              break;
+        case '/':
+              c.result = c.calcDiv();
+              System.out.println(c.result);
+              break;
+        case '^':
+              c.result = c.calcPower();
+              System.out.println(c.result);
+              break;
+        case '!':
+              c.result = c.calcFactorial();
+              System.out.println(c.result);
+              break;
+        case 'r':
+              c.result = c.calcSqroot();
+              System.out.println(c.result);
+              break;
+        default:
+              break;
+     }
+      
     } while(op != 'q');
     
-    System.out.println("Please enter first value");
-    x1 = sc.nextInt();
-    
-    System.out.println("Please enter second value (if factorial or sqrt then put any value)");
-    x2 = sc.nextInt();
   }
-  
-  public char opSet()
-  {
-    op = (char)sc.nextLine().charAt(0);
-    return op;
-  }
-  
-  public double getFirst()
-  {
-    return this.x1;
-  }
-  
-  public double getSecond()
-  {
-    return this.x2;
-  }
-  
-  public double calcSum()
-  {
-    return this.x1 + this.x2;
-  }
-  
-  public double calcSub()
-  {
-    return this.x1 - this.x2;
-  }
-  
-  public double calcMult()
-  {
-    return this.getFirst() * this.getSecond();
-  }
-  
-  public double calcDiv()
-  {
-    double zeroCheck = this.getSecond();
-    
-    if(zeroCheck == 0)
-      return 0;
-    
-    return this.getFirst() / zeroCheck;
-  }
-  
-  public double calcSqroot()
-  {
-    return Math.sqrt(this.getFirst()); 
-  }
-  
-  public double calcPower()
-  {
-    return Math.pow(this.getFirst(), this.getSecond());
-  }
-  
-  public double calcFactorial()
-  {
-    int fact=1;  
-  
-    for(int i=1; i<=this.getFirst(); i++)
-    {    
-        fact=fact*i;  
-    }
-    
-    return fact;
-  }
-  
 }
-  
