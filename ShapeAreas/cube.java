@@ -1,9 +1,9 @@
-public class Cube implements AreaInterface
+public class cube implements areaInterface
 {
 
 	private double side;
   
-	public Cube(double side)
+	public cube(double side)
 	{
 		this.side = side;
 	}

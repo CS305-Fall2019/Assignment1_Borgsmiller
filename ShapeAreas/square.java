@@ -1,8 +1,8 @@
-public class Square implements AreaInterface
+public class square implements areaInterface
 {
 	private double side;
 	  
-	public Square(double side)
+	public square(double side)
 	{
 		this.side = side;
 	}

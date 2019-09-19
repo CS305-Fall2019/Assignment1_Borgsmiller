@@ -1,9 +1,9 @@
-public class Triangle implements AreaInterface
+public class triangle implements areaInterface
 {
 	private double side1, side2, side3;
 	
 	
-	public Triangle(double side1, double side2, double side3) 
+	public triangle(double side1, double side2, double side3) 
 	{
 		this.side1 = side1;
 		this.side2 = side2;

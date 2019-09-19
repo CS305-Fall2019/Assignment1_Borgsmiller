@@ -1,18 +1,23 @@
 import java.lang.Math;
+import java.util.Scanner;
 
-public class arithCalc
+class arithCalc
 {
-  private int x1, x2;
+  private double x1, x2;
   private Scanner sc;
   public char op;
-  public int result;
+  public double result;
 
   public arithCalc()
   {
     sc = new Scanner(System.in);
-    
-    System.out.println("Please choose calculator operation");
-    op = (char) sc.nextline().charAt(0);
+
+    do
+    {
+      System.out.println("Please enter a valid operator: + - * / ^ ! r(sqrt)");
+      opSet();
+    } while(op != '+' && op != '-' && op != '*' && op != '/' && op != '^'
+      && op != '!' && op!= 'r');
     
     System.out.println("Please enter first value");
     x1 = sc.nextInt();
@@ -23,40 +28,40 @@ public class arithCalc
   
   public char opSet()
   {
-    op = (char)sc.nextline().charAt(0);
+    op = (char)sc.nextLine().charAt(0);
     return op;
   }
   
-  public int getFirst()
+  public double getFirst()
   {
     return this.x1;
   }
   
-  public int getSecond()
+  public double getSecond()
   {
     return this.x2;
   }
   
   
   
-  public int calcSum()
+  public double calcSum()
   {
     return this.x1 + this.x2;
   }
   
-  public int calcSub()
+  public double calcSub()
   {
     return this.x1 - this.x2;
   }
   
-  public int calcMult()
+  public double calcMult()
   {
     return this.getFirst() * this.getSecond();
   }
   
-  public int calcDiv()
+  public double calcDiv()
   {
-    int zeroCheck = this.getSecond();
+    double zeroCheck = this.getSecond();
     
     if(zeroCheck == 0)
       return 0;
@@ -64,21 +69,21 @@ public class arithCalc
     return this.getFirst() / zeroCheck;
   }
   
-  public int calcSqroot()
+  public double calcSqroot()
   {
     return Math.sqrt(this.getFirst()); 
   }
   
-  public int calcPower()
+  public double calcPower()
   {
-    return Math.pow(this.getFirst, this.getSecond);
+    return Math.pow(this.getFirst(), this.getSecond());
   }
   
-  public int calcFactorial()
+  public double calcFactorial()
   {
     int fact=1;  
   
-    for(i=1; i<=this.getFirst(); i++)
+    for(int i=1; i<=this.getFirst(); i++)
     {    
         fact=fact*i;  
     }
@@ -90,19 +95,12 @@ public class arithCalc
   
 
 
-public class Calculator 
+public class calculator 
 {
 
   public static void main(String[] args)
   {
     arithCalc c = new arithCalc();
-    
-    do
-    {
-      System.out.println("Please enter a valid operator: + - * / ^ ! r(root)");
-      c.opSet();
-    } while(c.op != '+' && c.op != '-' && c.op != '*' && c.op != '/' && c.op != '^'
-      && c.op != '!' && c.op!= 'r');
     
     switch(c.op)
     {
@@ -131,6 +129,6 @@ public class Calculator
             break;
    }
    
-   system.out.println(c.result);
+   System.out.println(c.result);
   }
 }

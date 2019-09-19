@@ -1,9 +1,9 @@
-public class Circle implements AreaInterface
+public class circle implements areaInterface
 {
 
 	private double radius;
 	  
-	public Circle(double radius)
+	public circle(double radius)
 	{
 	this.radius = radius;
 	}
